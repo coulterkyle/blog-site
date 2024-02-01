@@ -1,0 +1,9 @@
+{{#each blogposts as |blogpost|}}
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">{{blogpost.title}}</h2>
+            <p class="blog-post-meta">{{blogpost.created_by}} by <a href="#">{{blogpost.name}}</a></p>
+
+            <p>{{blogpost.text}}</p>
+        </article>
+        <hr>
+{{/each}}

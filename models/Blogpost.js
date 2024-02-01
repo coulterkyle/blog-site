@@ -19,21 +19,10 @@ Blogpost.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    post_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id',
-      },
-    },
-    comment_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'comment',
         key: 'id',
       },
     },

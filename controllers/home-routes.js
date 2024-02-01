@@ -20,14 +20,14 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       blogposts, 
-      logged_in: req.session.logged_in 
+      logged_in: req.session.loggedIn 
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/blogposts/:id', async (req, res) => {
   try {
     const blogpostData = await Blogpost.findByPk(req.params.id, {
       include: [
@@ -42,7 +42,7 @@ router.get('/project/:id', async (req, res) => {
 
     res.render('blogpost', {
       ...blogpost,
-      logged_in: req.session.logged_in
+      logged_in: req.session.loggedIn
     });
   } catch (err) {
     res.status(500).json(err);
@@ -62,16 +62,23 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      loggedIn: true
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+router.get('/register', (req, res) => {
+
+  res.render('register');
+});
+
+
+
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/profile');
     return;
   }
