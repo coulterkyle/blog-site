@@ -20,7 +20,8 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       blogposts, 
-      loggedIn: req.session.loggedIn 
+      loggedIn: req.session.loggedIn,
+      active: { home: true }
     });
   } catch (err) {
     res.status(500).json(err);
@@ -52,7 +53,7 @@ router.get('/blogposts/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
+        // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Blogpost }],
@@ -62,28 +63,29 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     res.render('dashboard', {
       ...user,
-      loggedIn: true
+      loggedIn: true,
+      active: { dashboard: true }
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+//renders register page
 router.get('/register', (req, res) => {
 
-  res.render('register');
+  res.render('register', {active: { register: true }});
 });
 
 
-
+//renders login page
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.loggedIn) {
     res.redirect('/dashboard');
     return;
   }
 
-  res.render('login');
+  res.render('login', {active: { login: true }});
 });
 
 module.exports = router;

@@ -3,6 +3,7 @@ const { Blogpost } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
+//Create new blogpost
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlogpost = await Blogpost.create({
@@ -16,6 +17,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+//Delete blogpost
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogpostData = await Blogpost.destroy({
