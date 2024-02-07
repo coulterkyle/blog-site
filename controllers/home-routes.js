@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const blogposts = blogpostData.map((blogpost) => blogpost.get({ plain: true }));
+    console.log(blogposts)
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -49,21 +50,18 @@ router.get('/blogposts/:id', async (req, res) => {
         },
       ]
     })
-    const comment = commentData.map((comment) => comment.get({ plain: true }))
-    console.log(comment)
-
+    const comments = commentData.map((comment) => comment.get({ plain: true }))
+    
     res.render('blogpost', {
-      ...blogpost,
-      ...comment,
-      logged_in: req.session.loggedIn
+      blogpost,
+      comments,
+      loggedIn: req.session.loggedIn
     });
 })
 
 
-// Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-        // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Blogpost }],
