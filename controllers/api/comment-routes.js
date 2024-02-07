@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//Create a comment - MUST REMOVE AUTH PARAMS FOR INSOMNIA
+//Create a comment
 router.post('/', async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-//delete a comment - MUST REMOVE AUTH PARAMS FOR INSOMNIA
+//Delete a comment
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const commentData = await Comment.destroy({
