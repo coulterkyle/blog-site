@@ -9,46 +9,48 @@
   <div class="container my-5 py-5">
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10">
-        <div class="card text-dark">
+        {{#if loggedIn}}
+        <div class="card text-dark"
+          style="margin-left: 150px; margin-right: 150px; margin-bottom: 40px; height: 270px;">
           <div class="card-body p-4">
-            {{#if loggedIn}}
-            <div class="w-100">
-              <h5>Add a comment</h5>
-              <div class="form-outline">
-                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                <label class="form-label" for="textAreaExample">What is your view?</label>
-              </div>
-              <div class="d-flex justify-content-between mt-3">
-                <button type="button" class="btn btn-danger">
-                  Submit <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                </button>
+            <form>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">
+                  <h4>Leave a comment</h4>
+                </label>
+                <input style="height: 100px;" type="text" class="form-control" id="new-comment"
+                  placeholder="What's your thought?">
               </div>
               <br>
-              <br>
-              <br>
-            </div>
-            {{/if}}
-            <h4 class="mb-0">Recent comments</h4>
-            <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+              <button onclick="writeBlogpost({{blogpost.id}})" type="button" class="btn btn-success">Send</button>
+            </form>
 
-            {{#each comments as |comment|}}
-            <hr class="my-0" />
+            <br>
+            <br>
+          </div>
+          {{/if}}
+          <h4 class="mb-0">Recent comments</h4>
+          <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
 
-            <div class="card-body p-4">
-              <div class="d-flex flex-start">
-                <div>
-                  <h6 class="fw-bold mb-1">{{user.name}} {{format_date comment.createdAt}}</h6>
-                  <div class="d-flex align-items-center mb-3">
-                    <p class="mb-0">{{comment.text}}</p>
-                    <br>
-                  </div>
+          {{#each comments as |comment|}}
+          <hr class="my-0" />
+
+          <div class="card-body p-4">
+            <div class="d-flex flex-start">
+              <div>
+                <h6 class="fw-bold mb-1">{{user.name}} {{format_date comment.createdAt}}</h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">{{comment.text}}</p>
+                  <br>
                 </div>
               </div>
             </div>
-            {{/each}}
           </div>
+          {{/each}}
         </div>
       </div>
     </div>
   </div>
+  </div>
 </section>
+<script src="/js/blogpost.js"></script>

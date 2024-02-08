@@ -1,4 +1,28 @@
-console.log("linked")
+let title = document.getElementById('new-title')
+let text = document.getElementById('new-text')
+
+function test() {
+}
+
+async function writeBlogpost() {
+    let data = {
+        "title": `${title.value}`,
+        "text": `${text.value}`
+    }
+
+    const updateRequest = await fetch(`/api/blogposts`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+
+    })
+
+    if (updateRequest.ok) {
+        document.location.assign(`/dashboard`);
+    }
+}
+
+
 
 async function deletePost(id) {
     if (id) {
@@ -8,10 +32,6 @@ async function deletePost(id) {
         });
 
         if (deleteRequest.ok) {
-            // const rePopulate = await fetch('/mymeals', {
-            //     method: "GET",
-            //     headers: { 'Content-Type': 'application/json' },
-            // })
             document.location.assign('/dashboard');
         }
     }
