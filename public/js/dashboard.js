@@ -5,6 +5,11 @@ function test() {
 }
 
 async function writeBlogpost() {
+    if (title.value == "" || text.value == "") {
+        alert("You must have a title and text for your blogpost!")
+        return
+    }
+
     let data = {
         "title": `${title.value}`,
         "text": `${text.value}`
