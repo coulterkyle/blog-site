@@ -84,7 +84,7 @@ This time however, when you click on a post - you will now be presented with an 
 
 ![comment-box](./public/assets/screenshots/comment-box.png)
 
-Please note - that logging out will be performed automatilly when idle for more than 5 minutes. However, you can logout manually at anytime by clicking the logout button in the top right cornet of the nav screen.
+Please note - that logging out will be performed automatically when idle for more than 5 minutes. However, you can logout manually at anytime by clicking the logout button in the top right corner of the screen.
 
 
 
