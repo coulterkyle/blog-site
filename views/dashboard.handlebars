@@ -1,6 +1,7 @@
 
-<h3>Create a new blogpost</h3>
-<form style="margin-bottom: 50px;">
+<h3 style="color: white;">Create a new blogpost</h3>
+<div style="margin-bottom: 50px; padding: 35px; border-radius: 50px; background: rgb(206, 204, 204)">
+<form>
   <div class="form-group">
     <label for="formGroupExampleInput">Title</label>
     <input type="text" class="form-control" id="new-title" value="{{blogpost.title}}">
@@ -10,14 +11,14 @@
     <input type="text" class="form-control" id="new-text" value="{{blogpost.text}}">
   </div>
   <br>
-  <button style="margin-left: auto; margin-right: auto;" onclick="writeBlogpost()" type="button" class="btn btn-success">Create New Post</button>
+  <button onclick="writeBlogpost()" type="button" class="btn btn-success">Create New Post</button>
 </form>
+</div>
 
-
-<h3>Previously Written Posts</h3>
+<h3 style="color: white;">Previously Written Posts</h3>
 <br>
 {{#each blogposts as |blogpost|}}
-<article class="blog-post">
+<article class="blog-post" style="background: white; border-radius: 50px; padding: 35px">
     <h2 class="display-5 link-body-emphasis mb-1"><a href="/blogposts/{{blogpost.id}}">{{blogpost.title}}</a></h2>
 <br>
 <br>

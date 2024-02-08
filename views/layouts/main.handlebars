@@ -18,17 +18,20 @@
                 <svg class="bi me-2" width="40" height="32">
                     <use xlink:href="#bootstrap"></use>
                 </svg>
-                <span class="fs-4">Tech Blog</span>
+                <h1 style="color: white;">TECH BLOG</h1>
             </a>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link {{#if active.home}}active{{/if}}" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="/" class="nav-link {{#if active.home}}active{{/if}}"
+                        aria-current="page">Home</a></li>
                 {{#if loggedIn}}
-                <li class="nav-item"><a href="/dashboard" class="nav-link {{#if active.dashboard}}active{{/if}}">Dashboard</a></li>
+                <li class="nav-item"><a href="/dashboard"
+                        class="nav-link {{#if active.dashboard}}active{{/if}}">Dashboard</a></li>
                 <li class="nav-item" id="logout"><a href="#" class="nav-link">Logout</a></li>
                 {{else}}
                 <li class="nav-item"><a href="/login" class="nav-link {{#if active.login}}active{{/if}}">Login</a></li>
-                <li class="nav-item"><a href="/register" class="nav-link {{#if active.register}}active{{/if}}">Create New Account</a></li>
+                <li class="nav-item"><a href="/register" class="nav-link {{#if active.register}}active{{/if}}">Create
+                        New Account</a></li>
                 {{/if}}
             </ul>
         </header>

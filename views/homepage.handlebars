@@ -1,5 +1,5 @@
 {{#each blogposts as |blogpost|}}
-        <article class="blog-post">
+        <article class="blog-post" style="background: white; border-radius: 50px; padding: 35px">
             <h2 class="display-5 link-body-emphasis mb-1"><a href="/blogposts/{{blogpost.id}}">{{blogpost.title}}</a></h2>
             <p class="blog-post-meta">by: {{user.name}}</p>
             <p>{{format_date blogpost.createdAt}}</p>
