@@ -21,16 +21,19 @@ By completing this project I was able to demonstrate ORM and MVC principals I le
 ## Installation
 
 Visit the deployed site on Heroku -
+https://thawing-plains-78780-070b17484b72.herokuapp.com/
 
 To see and edit this page locally,
 
 Create a database in sequel using the "db" schema.
 
+Use the .ENV example to set up environment variables.
+
 To seed the database with generic data run the following command:
 "node seeds/seed.js"
 
-Run the following commands in your integrated terminal.
-"start": "node server.js",
+Run the following commands in your integrated terminal to start the server.
+"node server.js",
 
 ![associations](./public/assets/screenshots/associations.png)
 
