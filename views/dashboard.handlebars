@@ -7,7 +7,12 @@
 {{#each blogposts as |blogpost|}}
 <article class="blog-post">
     <h2 class="display-5 link-body-emphasis mb-1"><a href="/blogposts/{{blogpost.id}}">{{blogpost.title}}</a></h2>
-    {{!-- <p class="blog-post-meta">{{blogpost.created_by}} by: {{user.name}}</p> --}}
+<br>
+<br>
+<button type="button" style="color: white;" class="btn btn-warning"><a href="/edit/{{blogpost.id}}">Edit</button></a>
+<button onclick="deletePost({{blogpost.id}})" type="button" class="btn btn-danger">Delete</button>
 </article>
 <hr>
 {{/each}}
+
+<script src="/js/dashboard.js"></script>

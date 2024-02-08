@@ -1,71 +1,54 @@
-<div>
-  <article class="blog-post">
-    <h2 class="display-5 link-body-emphasis mb-1">{{blogpost.title}}</a></h2>
-    <p>{{blogpost.text}}</p>
-    <p class="blog-post-meta">by: {{blogpost.user.name}}</p>
-    <p>Created on:{{format_date blogpost.createdAt}}</p>
-    <p>Last updated on:{{format_date blogpost.updatedAt}}</p>
-  </article>
-  <section>
-    <div class="container my-5 py-5">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-12 col-lg-10">
-          <div class="card text-dark">
-            <div class="card-body p-4">
-              <h4 class="mb-0">Recent comments</h4>
-              <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
-              {{!-- <p>{{0.text}}</p>
-              <p>by: {{0.user.name}}</p> --}}
-
-              {{#each comments as |comment|}}
-              <hr class="my-0" />
-
-              <div class="card-body p-4">
-                <div class="d-flex flex-start">
-                  <div>
-                    <h6 class="fw-bold mb-1">{{user.name}} {{format_date comment.createdAt}}</h6>
-                    <div class="d-flex align-items-center mb-3">
-                      <p class="mb-0">{{comment.text}}</p>
-                      <br>
-                    </div>
-                  </div>
-                </div>
+<article class="blog-post">
+  <h2 class="display-5 link-body-emphasis mb-1">{{blogpost.title}}</a></h2>
+  <p>{{blogpost.text}}</p>
+  <p class="blog-post-meta">by: {{blogpost.user.name}}</p>
+  <p>Created on:{{format_date blogpost.createdAt}}</p>
+  <p>Last updated on:{{format_date blogpost.updatedAt}}</p>
+</article>
+<section>
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="card text-dark">
+          <div class="card-body p-4">
+            {{#if loggedIn}}
+            <div class="w-100">
+              <h5>Add a comment</h5>
+              <div class="form-outline">
+                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                <label class="form-label" for="textAreaExample">What is your view?</label>
               </div>
-              {{/each}}
+              <div class="d-flex justify-content-between mt-3">
+                <button type="button" class="btn btn-danger">
+                  Submit <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                </button>
+              </div>
+              <br>
+              <br>
+              <br>
             </div>
-          </div>
-        </div>
-      </div>
-  </section>
+            {{/if}}
+            <h4 class="mb-0">Recent comments</h4>
+            <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
 
-  {{#if loggedIn}}
-  <section>
-    <div class="container my-5 py-5 text-dark">
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-6">
-          <div class="card">
+            {{#each comments as |comment|}}
+            <hr class="my-0" />
+
             <div class="card-body p-4">
-              <div class="d-flex flex-start w-100">
-
-                <div class="w-100">
-                  <h5>Add a comment</h5>
-                  <div class="form-outline">
-                    <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                    <label class="form-label" for="textAreaExample">What is your view?</label>
-                  </div>
-                  <div class="d-flex justify-content-between mt-3">
-                    <button type="button" class="btn btn-danger">
-                      Submit <i class="fas fa-long-arrow-alt-right ms-1"></i>
-                    </button>
+              <div class="d-flex flex-start">
+                <div>
+                  <h6 class="fw-bold mb-1">{{user.name}} {{format_date comment.createdAt}}</h6>
+                  <div class="d-flex align-items-center mb-3">
+                    <p class="mb-0">{{comment.text}}</p>
+                    <br>
                   </div>
                 </div>
               </div>
             </div>
+            {{/each}}
           </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
 </section>
-{{/if}}
-</div>

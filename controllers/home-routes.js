@@ -91,6 +91,28 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const blogpostData = await Blogpost.findOne({
+      where: { id: req.params.id },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ]
+    })
+    const blogpost = blogpostData.get({ plain: true });
+
+    res.render('edit', {
+      blogpost,
+      loggedIn: req.session.loggedIn
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //Renders register page
 router.get('/register', (req, res) => {
 
